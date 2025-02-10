@@ -1,2 +1,2 @@
 # LabPythonProgramming
-Here we have python Programmings
+Here we have python Programming
