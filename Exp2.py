@@ -1,3 +1,4 @@
+# Experiment 2 - by Ravi Ardhana 590013582 B-10
 # Q1
 x,y,z = 9,7,1
 print(x+y+z)
