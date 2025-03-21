@@ -2,7 +2,15 @@
 import os
 import json
 import random
-from Type_conv_module import input_type1 as IT1
+
+# to change input string to appropriate type
+def IT1(a):
+    try:
+        str_n=str(a)
+        return float(a) if "." in str_n else int(a)
+    except:
+        return str(a)
+
 class User:
     branch_code= "NULL"
     balance = 0
