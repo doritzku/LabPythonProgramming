@@ -112,7 +112,7 @@ def create_account(accounts, bank_codes):
             elif len(account_no) != 14:
                 raise ValueError("Account Number must be 14 digits only!")
             elif find_account(accounts, account_no):
-                raise SimilarAccountError(f"Account number {account_no} already in use!")
+                raise SimilarAccountError(f"Account number '{account_no}' already in use!")
         elif choice.lower() == "n":
             account_no = random_acc_no()
             print("------------------------------------------")
