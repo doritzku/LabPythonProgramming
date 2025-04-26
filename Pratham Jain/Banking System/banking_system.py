@@ -28,7 +28,7 @@ class InvalidPinError(Exception):
     pass
 
 file_path = "accounts.json"
-transac_path = "transaction.json"
+transac_path = "transactions.json"
 
 
 def open_acc_file():
