@@ -542,7 +542,7 @@ class Menu:
 
             print("===========================================")
 
-            pick = input("Enter your pick (1-6): ")
+            pick = input("Enter your pick (1-7): ")
 
             if pick == "1":
                 self.banking_operation.deposit(accounts, account_no)
