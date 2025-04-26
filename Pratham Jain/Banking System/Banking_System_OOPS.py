@@ -172,12 +172,9 @@ class Account:
             if account_type.lower() != "savings" and account_type.lower() != "current":
                 raise ValueError("Enter a valid account type only!")
 
-            starting_balance = input("Enter starting balance: $")
-            if not starting_balance.isnumeric():
-                raise ValueError("Starting Balance can only be numeric!")
+            starting_balance = float(input("Enter starting balance: $"))
             if starting_balance == "":
                 raise ValueError("Starting balance cannot be empty!")
-            starting_balance = float(starting_balance)
             if starting_balance < 0:
                 raise InvalidAmountError("Starting balance cannot be less than zero!")
 
@@ -269,12 +266,9 @@ class Banking_Operation:
             if not account:
                 raise AccountNotFoundError("No account was found with this account number!")
 
-            deposit_amount = input("Enter amount to deposit: $")
-            if not deposit_amount.isnumeric():
-                raise ValueError("Deposit Amount can only be numeric!")
+            deposit_amount = float(input("Enter amount to deposit: $"))
             if deposit_amount == "":
                 raise ValueError("Deposit amount cannot be empty!")
-            deposit_amount = float(deposit_amount)
             if deposit_amount < 0:
                 raise InvalidAmountError("Deposit amount cannot be less than 0!")
             if deposit_amount > 10000000000:
@@ -308,12 +302,9 @@ class Banking_Operation:
             if not account:
                 raise AccountNotFoundError("No account was found with this account number!")
 
-            withdraw_amount = input("Enter the amount you want to withdraw: $")
-            if not withdraw_amount.isnumeric():
-                raise ValueError("Deposit Amount can only be numeric!")
+            withdraw_amount = float(input("Enter the amount you want to withdraw: $"))
             if withdraw_amount == "":
                 raise ValueError("Withdraw amount cannot be empty!")
-            withdraw_amount = float(withdraw_amount)
             if withdraw_amount < 0:
                 raise InvalidAmountError("Withdraw amount cannot be less than zero!")
             if withdraw_amount > account['balance']:
@@ -356,12 +347,9 @@ class Banking_Operation:
             if not receiver_account:
                 raise AccountNotFoundError("No account was found with this account number!")
 
-            transfer_amount = input("Enter amount you want to transfer: $")
-            if not transfer_amount.isnumeric():
-                raise ValueError("Deposit Amount can only be numeric!")
+            transfer_amount = float(input("Enter amount you want to transfer: $"))
             if transfer_amount == "":
                 raise ValueError("Transfer amount cannot be empty!")
-            transfer_amount = float(transfer_amount)
             if transfer_amount < 0:
                 raise InvalidAmountError("Transfer amount cannot be less than 0!")
             if transfer_amount > sender_account['balance']:
