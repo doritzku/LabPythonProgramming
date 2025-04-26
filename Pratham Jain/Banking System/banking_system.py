@@ -130,9 +130,12 @@ def create_account(accounts, bank_codes):
         if account_type.lower() != "savings" and account_type.lower() != "current":
             raise ValueError("Enter a valid account type only!")
 
-        starting_balance = float(input("Enter starting balance: $"))
+        starting_balance = input("Enter starting balance: $")
+        if not starting_balance.isnumeric():
+            raise ValueError("Starting balance can only be numeric!")
         if starting_balance == "":
             raise ValueError("Starting balance cannot be empty!")
+        starting_balance = float(starting_balance)
         if starting_balance < 0:
             raise InvalidAmountError("Starting balance cannot be less than zero!")
 
@@ -237,9 +240,12 @@ def deposit(accounts, account_no):
         if not account:
             raise AccountNotFoundError("No account was found with this account number!")
 
-        deposit_amount = float(input("Enter amount to deposit: $"))
+        deposit_amount = input("Enter amount to deposit: $")
+        if not deposit_amount.isnumeric():
+            raise ValueError("Deposit Amount can only be numeric!")
         if deposit_amount == "":
             raise ValueError("Deposit amount cannot be empty!")
+        deposit_amount = float(deposit_amount)
         if deposit_amount < 0:
             raise InvalidAmountError("Deposit amount cannot be less than 0!")
         if deposit_amount > 10000000000:
@@ -273,9 +279,12 @@ def withdraw(accounts, account_no):
         if not account:
             raise AccountNotFoundError("No account was found with this account number!")
 
-        withdraw_amount = float(input("Enter the amount you want to withdraw: $"))
+        withdraw_amount = input("Enter the amount you want to withdraw: $")
+        if not withdraw_amount.isnumeric():
+            raise ValueError("Withdraw Amount can only be numeric!")
         if withdraw_amount == "":
             raise ValueError("Withdraw amount cannot be empty!")
+        withdraw_amount = float(withdraw_amount)
         if withdraw_amount < 0:
             raise InvalidAmountError("Withdraw amount cannot be less than zero!")
         if withdraw_amount > account['balance']:
@@ -318,9 +327,12 @@ def transfer(accounts, account_no):
         if not receiver_account:
             raise AccountNotFoundError("No account was found with this account number!")
 
-        transfer_amount = float(input("Enter amount you want to transfer: $"))
+        transfer_amount = input("Enter amount you want to transfer: $")
+        if not transfer_amount.isnumeric():
+            raise ValueError("Transfer amount can only be numeric!")
         if transfer_amount == "":
             raise ValueError("Transfer amount cannot be empty!")
+        transfer_amount = float(transfer_amount)
         if transfer_amount < 0:
             raise InvalidAmountError("Transfer amount cannot be less than 0!")
         if transfer_amount > sender_account['balance']:
@@ -519,21 +531,21 @@ def menu(accounts, account_no):
 
         print("===========================================")
 
-        pick = int(input("Enter your pick (1-6): "))
+        pick = input("Enter your pick (1-7): ")
 
-        if pick == 1:
+        if pick == "1":
             deposit(accounts, account_no)
-        elif pick == 2:
+        elif pick == "2":
             withdraw(accounts, account_no)
-        elif pick == 3:
+        elif pick == "3":
             transfer(accounts, account_no)
-        elif pick == 4:
+        elif pick == "4":
             balance(accounts, account_no)
-        elif pick == 5:
+        elif pick == "5":
             acc_details(accounts, account_no)
-        elif pick == 6:
+        elif pick == "6":
             transactions_log(accounts, account_no)
-        elif pick == 7:
+        elif pick == "7":
             save_acc_file(accounts)
             is_running = False
             print("Logging out!")
@@ -568,15 +580,15 @@ while is_True:
     print("3. Exit")
     print("===========================================")
 
-    option = int(input("Enter your pick (1-3): "))
+    option = input("Enter your pick (1-3): ")
 
-    if option == 1:
+    if option == "1":
         create_account(accounts, bank_codes)
-    elif option == 2:
+    elif option == "2":
         account_no = login_acc(accounts)
         if account_no:
             menu(accounts, account_no)
-    elif option == 3:
+    elif option == "3":
         save_acc_file(accounts)
         is_True = False
         print("-------------------------------------------")
