@@ -1,7 +1,0 @@
-streamlit
-pandas
-matplotlib
-beautifulsoup4
-markdown
-google-generativeai
-streamlit-extras
